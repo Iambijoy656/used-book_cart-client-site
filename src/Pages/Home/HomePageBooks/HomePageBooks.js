@@ -1,6 +1,12 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 const HomePageBooks = () => {
+    const [categories, setCategories] = useState([])
+
+    useEffect(() => {
+        fetch(http://localhost:5000/categories')
+    }, [])
+
     return (
         <div>
             <h2 className='text-4xl my-6 text-center font-semibold'>Books</h2>
