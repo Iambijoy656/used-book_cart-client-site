@@ -1,0 +1,101 @@
+[
+    {
+        "category_id": "1",
+        "book_title": "Silent Women",
+        "category": "History",
+        "img": "https://cdn.shopify.com/s/files/1/0359/5979/9852/products/shop-new-67_600x.jpg?v=1587117773",
+        "resale_price": 20,
+        "Original_price": 50,
+        "location": "Wari,Dhaka",
+        "post_date": "Nov 24,2022",
+        "use": "1 month"
+    },
+    {
+        "category_id": "1",
+        "book_title": "Wake Me up",
+        "category": "History",
+        "img": "https://cdn.shopify.com/s/files/1/0359/5979/9852/products/shop-new-104_600x.jpg?v=1587120877",
+        "resale_price": 20,
+        "Original_price": 60,
+        "location": "Dhaka",
+        "post_date": "Nov 24,2022",
+        "use": "2 month"
+    },
+    {
+        "category_id": "2",
+        "book_title": "The Stadium by Night",
+        "category": "Fantacy",
+        "img": "https://cdn.shopify.com/s/files/1/0359/5979/9852/products/shop-new-85_600x.jpg?v=1587118936",
+        "resale_price": 10,
+        "Original_price": 20,
+        "location": "Tikatuli,Dhaka",
+        "post_date": "Nov 24,2022",
+        "use": "2 month"
+    },
+    {
+        "category_id": "2",
+        "book_title": "Beauty of Structures",
+        "category": "Fantacy",
+        "img": "https://cdn.shopify.com/s/files/1/0359/5979/9852/products/shop-new-88_600x.jpg?v=1587115559",
+        "resale_price": 10,
+        "Original_price": 20,
+        "location": "Tikatuli,Dhaka",
+        "post_date": "Nov 24,2022",
+        "use": "2 month"
+    },
+    {
+        "category_id": "3",
+        "book_title": "The Hill We Climb",
+        "category": "Poetry",
+        "img": "https://www.cavalierhousebooks.com/sites/cavalierhousebooks.com/files/styles/quick_story_image/public/IMG_20210330_124745_774_0.jpg?itok=GmkoQSlN",
+        "resale_price": 40,
+        "Original_price": 80,
+        "location": "Dhaka",
+        "post_date": "Nov 24,2022",
+        "use": "2 month"
+    },
+    {
+        "category_id": "3",
+        "book_title": "The Poetry Of Robert Forst",
+        "category": "Poetry",
+        "img": "https://www.cavalierhousebooks.com/sites/cavalierhousebooks.com/files/styles/quick_story_image/public/IMG_20210330_124745_774_0.jpg?itok=GmkoQSlN",
+        "resale_price": 40,
+        "Original_price": 80,
+        "location": "Dhaka",
+        "post_date": "Nov 24,2022",
+        "use": "10 days"
+    },
+    {
+        "category_id": "4",
+        "book_title": "Mindset Matters",
+        "category": "Business",
+        "img": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1615136339i/57336761.jpg",
+        "resale_price": 40,
+        "Original_price": 80,
+        "location": "Dhaka",
+        "post_date": "Nov 24,2022",
+        "use": "10 days"
+    },
+    {
+        "category_id": "4",
+        "book_title": "Rich Dad Poor Dad",
+        "category": "Business",
+        "img": "https://i.pinimg.com/736x/27/a6/82/27a6823350213855840c7e10a05322a1.jpg",
+        "resale_price": 40,
+        "Original_price": 80,
+        "location": "Dhaka",
+        "post_date": "Nov 24,2022",
+        "use": "10 days"
+    },
+    {
+        "category_id": "4",
+        "book_title": "Zero To CEO",
+        "category": "Business",
+        "img": "https://images.squarespace-cdn.com/content/v1/5e8d08e3fa7e494b0d767a08/1638327438991-F2DQEOZWQ5JMESJS7O01/zero-to-CEO-award-winning-book-cover.jpg",
+        "resale_price": 40,
+        "Original_price": 80,
+        "location": "Dhaka",
+        "post_date": "Nov 24,2022",
+        "use": "10 days"
+    }
+]

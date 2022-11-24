@@ -1,0 +1,18 @@
+[
+    {
+        "id": "1",
+        "category_name": "History"
+    },
+    {
+        "id": "2",
+        "category_name": "Fantacy"
+    },
+    {
+        "id": "3",
+        "category_name": "Poetry"
+    },
+    {
+        "id": "4",
+        "category_name": "Business"
+    }
+]
