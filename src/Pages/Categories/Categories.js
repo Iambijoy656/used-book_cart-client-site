@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { Link, useLoaderData } from 'react-router-dom';
+import BooksCart from '../Home/Books/BooksCart';
 
 const Categories = () => {
+    const allBooks = useLoaderData();
+
     const [categories, setCategories] = useState([])
 
     useEffect(() => {
@@ -8,6 +12,11 @@ const Categories = () => {
             .then(res => res.json())
             .then(data => setCategories(data))
     }, [])
+
+
+
+
+
 
     return (
         <div>
@@ -26,13 +35,26 @@ const Categories = () => {
                 <div className="container grid grid-cols-2 gap-6 mx-auto sm:grid-cols-4 xl:grid-cols-4 text-center">
                     {
                         categories?.map(category =>
-                            <button
-                                key={category._id}
-                                type="button" className="px-8 py-3 font-semibold border border-gray-500 text-gray-900 hover:bg-sky-700 hover:text-white">{category.category_name}</button>)
+                            <Link to={`/category/${category.category_name}`}>
+                                <button
+                                    key={category._id}
+                                    type="button" className="px-8 xl:w-80 py-3 font-semibold border border-gray-500 text-gray-900 hover:bg-sky-700 hover:text-white">{category.category_name}</button>
+                            </Link>)
                     }
 
                 </div>
+            </div>
 
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-10'>
+                {
+                    allBooks?.map(book => <BooksCart
+                        key={book._id}
+                        book={book}
+
+                    >
+
+                    </BooksCart>)
+                }
             </div>
 
 

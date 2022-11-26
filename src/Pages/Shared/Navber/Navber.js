@@ -55,6 +55,18 @@ const Navber = () => {
                 Blog
             </NavLink>
         </li>
+        <li>
+            <NavLink
+                to="/signup"
+                style={({ isActive }) => ({
+                    color: isActive ? 'red' : 'black'
+                })}
+                className="font-medium tracking-wide transition-colors duration-200 bg-rose-50 "
+
+            >
+                Signup
+            </NavLink>
+        </li>
 
 
         {/* {
