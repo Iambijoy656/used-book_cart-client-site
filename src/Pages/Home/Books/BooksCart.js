@@ -1,7 +1,7 @@
 import React from 'react';
 
-const BooksCart = ({ book }) => {
-    const { book_title, category, img, resale_price, Original_price, location, post_date, use } = book
+const BooksCart = ({ book, setBook }) => {
+    const { book_title, img, resale_price, Original_price, location, post_date, use } = book
     return (
 
         <div className="container w-full max-w-sm overflow-hidden bg-white rounded-lg shadow-lg mt-5 mx-auto">
@@ -33,10 +33,10 @@ const BooksCart = ({ book }) => {
 
                     <h1 className="px-2 text-sm">{location}</h1>
                 </div>
-                <div className="flex items-center mt-4 text-gray-700 ">
-                    <button
-
-                        type="button" className="px-8 py-3 w-full font-semibold border border-gray-500 bg-sky-600 text-white hover:bg-sky-700 hover:text-white">Purchase</button>
+                <div className="flex items-center mt-4 text-gray-700 text-center ">
+                    <label
+                        onClick={() => setBook(book)}
+                        type="button" htmlFor="purchaseModal" className="px-8 py-3 w-full font-semibold border border-gray-500 bg-sky-600 text-white hover:bg-sky-700 hover:text-white">Purchase</label>
                 </div>
             </div>
         </div>

@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import BooksCart from '../Home/Books/BooksCart';
+import PurchaseModal from '../Home/Books/PurchaseModal';
 
 const Categories = () => {
+    const [book, setBook] = useState([])
+
     const allBooks = useLoaderData();
+
 
     const [categories, setCategories] = useState([])
 
@@ -50,12 +54,21 @@ const Categories = () => {
                     allBooks?.map(book => <BooksCart
                         key={book._id}
                         book={book}
+                        setBook={setBook}
 
                     >
 
                     </BooksCart>)
                 }
             </div>
+
+            {
+                book &&
+                <PurchaseModal
+                    book={book}
+                    setBook={setBook}
+                ></PurchaseModal>
+            }
 
 
         </div>

@@ -1,9 +1,23 @@
-import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import logo from '../../../assets/logo.png';
 import ReactTooltip from 'react-tooltip';
+import { AuthContext } from '../../../context/AuthProvider';
 
 const Navber = () => {
+    const { user, logOut } = useContext(AuthContext)
+    const navigate = useNavigate();
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+                navigate('/')
+
+            })
+            .catch(error => {
+                console.error(error);
+            })
+    }
 
     const menuItems = <>
         <li>
@@ -33,18 +47,6 @@ const Navber = () => {
         </li>
         <li>
             <NavLink
-                to="/gallery"
-                style={({ isActive }) => ({
-                    color: isActive ? 'red' : 'black'
-                })}
-                className="font-medium tracking-wide transition-colors duration-200 bg-rose-50 "
-
-            >
-                Gallery
-            </NavLink>
-        </li>
-        <li>
-            <NavLink
                 to="/blog"
                 style={({ isActive }) => ({
                     color: isActive ? 'red' : 'black'
@@ -55,45 +57,23 @@ const Navber = () => {
                 Blog
             </NavLink>
         </li>
-        <li>
-            <NavLink
-                to="/signup"
-                style={({ isActive }) => ({
-                    color: isActive ? 'red' : 'black'
-                })}
-                className="font-medium tracking-wide transition-colors duration-200 bg-rose-50 "
-
-            >
-                Signup
-            </NavLink>
-        </li>
 
 
-        {/* {
+
+        {
             user?.email ?
                 <>
+
                     <li>
                         <NavLink
-                            to="/review"
+                            to="/dashboard"
                             style={({ isActive }) => ({
                                 color: isActive ? 'red' : 'black'
                             })}
                             className="font-medium tracking-wide transition-colors duration-200 bg-rose-50 "
 
                         >
-                            My Review
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink
-                            to="/addservice"
-                            style={({ isActive }) => ({
-                                color: isActive ? 'red' : 'black'
-                            })}
-                            className="font-medium tracking-wide transition-colors duration-200 bg-rose-50 "
-
-                        >
-                            Add Service
+                            Dashboard
                         </NavLink>
                     </li>
 
@@ -109,34 +89,10 @@ const Navber = () => {
                         </NavLink>
                     </li>
 
-                    <li>
-                        <Link to="/profile">
-                            <img
-                                className="w-10 rounded-full"
-                                data-tip={user.displayName}
-                                src={user?.photoURL}
-                                alt=""
-                            />
-                        </Link>
-                        <ReactTooltip />
-                    </li>
-
                 </>
                 :
                 <>
 
-                    <li>
-                        <NavLink
-                            to="/login"
-                            style={({ isActive }) => ({
-                                color: isActive ? 'red' : 'black'
-                            })}
-                            className="font-medium tracking-wide transition-colors duration-200 bg-rose-50 "
-
-                        >
-                            SingIn
-                        </NavLink>
-                    </li>
                     <li>
                         <NavLink
                             to="/signup"
@@ -149,8 +105,20 @@ const Navber = () => {
                             Signup
                         </NavLink>
                     </li>
+                    <li>
+                        <NavLink
+                            to="/login"
+                            style={({ isActive }) => ({
+                                color: isActive ? 'red' : 'black'
+                            })}
+                            className="font-medium tracking-wide transition-colors duration-200 bg-rose-50 "
+
+                        >
+                            SignIn
+                        </NavLink>
+                    </li>
                 </>
-        } */}
+        }
 
 
 
