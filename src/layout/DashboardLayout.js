@@ -26,12 +26,12 @@ const DashboardLayout = () => {
                         </li>
                         <li>
                             <NavLink
-                                to="/"
+                                to="/dashboard/allusers"
                                 style={({ isActive }) => ({
                                     color: isActive ? 'blue' : 'black'
                                 })}
                                 className="font-medium tracking-wide transition-colors duration-200 bg-gray-100 "
-                            >Sidebar Item 2</NavLink>
+                            >All Buyers</NavLink>
                         </li>
                     </ul>
 

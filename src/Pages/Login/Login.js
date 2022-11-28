@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 
 
 
+
 const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm()
 
@@ -15,9 +16,12 @@ const Login = () => {
     const [loginUserEmail, setLoginUserEmail] = useState('')
 
 
+
     const navigate = useNavigate();
     const location = useLocation();
     const from = location?.state?.from?.pathname || "/";
+
+
 
 
     const handleLogin = data => {
@@ -26,8 +30,9 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 setLoginError('')
-                setLoginUserEmail(data.email)
+                getUserToken(data.email)
                 navigate(from, { replace: true });
+
 
 
             })
@@ -75,7 +80,16 @@ const Login = () => {
     };
 
 
-
+    const getUserToken = email => {
+        fetch(`http://localhost:5000/jwt?email=${email}`)
+            .then(res => res.json())
+            .then(data => {
+                if (data.accessToken) {
+                    localStorage.setItem('accessToken', data.accessToken)
+                    navigate('/')
+                }
+            });
+    }
 
 
 

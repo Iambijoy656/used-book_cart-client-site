@@ -10,8 +10,6 @@ const SignUp = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { createUser, updateUser, signInWithGoogle } = useContext(AuthContext)
 
-    const [createdUserEmail, setCreatedUserEmail] = useState('')
-
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -72,8 +70,8 @@ const SignUp = () => {
         })
             .then(res => res.json())
             .then(data => {
-                getUserToken(email);
-                navigate('/')
+                console.log('save data', data);
+                getUserToken(email)
             })
 
     }
@@ -111,7 +109,7 @@ const SignUp = () => {
                         }
                         if (data.acknowledged) {
                             toast.success("login successfully");
-
+                            navigate("/");
                         }
                     });
             })
@@ -127,9 +125,9 @@ const SignUp = () => {
             .then(data => {
                 if (data.accessToken) {
                     localStorage.setItem('accessToken', data.accessToken)
-                    navigate("/");
+                    navigate('/')
                 }
-            })
+            });
     }
 
 
