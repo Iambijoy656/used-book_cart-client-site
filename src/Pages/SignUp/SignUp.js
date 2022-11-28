@@ -37,7 +37,7 @@ const SignUp = () => {
                 updateUser(userInfo)
                     .then(() => {
                         userSaved(data.name, data.email, data.role);
-                        navigate(from, { replace: true });
+
                     })
                     .catch((error) => {
                         console.log(error);
@@ -58,32 +58,79 @@ const SignUp = () => {
 
     }
 
-    const handleGoogleSignIn = () => {
-        signInWithGoogle()
-            .then((result) => {
-                const user = result.user;
-                navigate(from, { replace: true });
-            })
-            .catch((error) => console.error(error));
-    };
 
 
     const userSaved = (name, email, role) => {
         const user = { name, email, role };
-        fetch('http://localhost:5000//users', {
-            method: "POST",
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
             headers: {
                 'content-type': 'application/json'
             },
             body: JSON.stringify(user)
+
         })
             .then(res => res.json())
             .then(data => {
-                setCreatedUserEmail(email)
-
+                getUserToken(email);
+                navigate('/')
             })
+
     }
 
+
+
+
+
+
+
+
+    const handleGoogleSignIn = () => {
+        signInWithGoogle()
+            .then((result) => {
+                const user = result.user;
+                const userForDB = {
+                    name: user?.displayName,
+                    email: user?.email,
+                    role: "buyer",
+
+                };
+                console.log(userForDB);
+
+                fetch(`http://localhost:5000/users`, {
+                    method: "POST",
+                    headers: {
+                        "content-type": "application/json",
+                    },
+                    body: JSON.stringify(userForDB),
+                })
+                    .then((res) => res.json())
+                    .then((data) => {
+                        if (data.message) {
+                            navigate("/");
+                        }
+                        if (data.acknowledged) {
+                            toast.success("login successfully");
+
+                        }
+                    });
+            })
+
+            .catch((error) => console.error(error));
+    };
+
+
+
+    const getUserToken = email => {
+        fetch(`http://localhost:5000/jwt?email=${email}`)
+            .then(res => res.json())
+            .then(data => {
+                if (data.accessToken) {
+                    localStorage.setItem('accessToken', data.accessToken)
+                    navigate("/");
+                }
+            })
+    }
 
 
 
@@ -108,8 +155,8 @@ const SignUp = () => {
                             className="select select-ghost select-bordered w-full max-w-xs"
                         >
                             <option disabled selected>buyer or seller?</option>
-                            <option>Buyer</option>
-                            <option>Seller</option>
+                            <option>buyer</option>
+                            <option>seller</option>
                         </select>
                         {errors.name && <small className='text-error pt-2'>{errors.name.message}</small>}
                     </div>
