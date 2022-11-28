@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { AuthContext } from '../../../context/AuthProvider';
 
 const PurchaseModal = ({ book, setBook }) => {
     const { user } = useContext(AuthContext)
-    const { book_title } = book
+    const { _id, book_title, resale_price } = book
 
 
     const handlePurchase = event => {
@@ -16,19 +17,36 @@ const PurchaseModal = ({ book, setBook }) => {
 
 
         const buyerDetails = {
+            bookId: _id,
             book: book_title,
             name,
+            price: resale_price,
             email,
             phone,
             meetingLocation
 
         }
 
-        // todo : send data to the server 
-        // and close modal
-        // see success toast
-        console.log(buyerDetails);
-        setBook(null)
+
+        fetch('http://localhost:5000/buyers', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(buyerDetails)
+
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.acknowledged) {
+                    setBook(null)
+                    toast.success('Order Confirmed')
+                }
+            })
+
+
+
     }
 
     return (

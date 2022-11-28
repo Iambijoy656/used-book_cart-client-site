@@ -108,8 +108,8 @@ const SignUp = () => {
                             className="select select-ghost select-bordered w-full max-w-xs"
                         >
                             <option disabled selected>buyer or seller?</option>
-                            <option>user</option>
-                            <option>seller</option>
+                            <option>Buyer</option>
+                            <option>Seller</option>
                         </select>
                         {errors.name && <small className='text-error pt-2'>{errors.name.message}</small>}
                     </div>

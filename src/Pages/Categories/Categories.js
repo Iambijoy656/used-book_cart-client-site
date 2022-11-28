@@ -1,3 +1,4 @@
+import { useQuery } from '@tanstack/react-query';
 import React, { useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import BooksCart from '../Home/Books/BooksCart';
@@ -6,8 +7,18 @@ import PurchaseModal from '../Home/Books/PurchaseModal';
 const Categories = () => {
     const [book, setBook] = useState([])
 
-    const allBooks = useLoaderData();
+    // const allBooks = useLoaderData();
 
+
+
+    const { data: allBooks = [], isLoading, refetch } = useQuery({
+        queryKey: ['allBooks'],
+        queryFn: async () => {
+            const res = await fetch(`http://localhost:5000/allBooks`)
+            const data = await res.json();
+            return data;
+        }
+    })
 
     const [categories, setCategories] = useState([])
 

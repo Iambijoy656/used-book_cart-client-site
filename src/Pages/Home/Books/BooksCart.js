@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../../context/AuthProvider';
 
 const BooksCart = ({ book, setBook }) => {
+    const { user } = useContext(AuthContext)
     const { book_title, img, resale_price, Original_price, location, post_date, use } = book
     return (
 
