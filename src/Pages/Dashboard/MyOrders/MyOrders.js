@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider';
+import Loading from '../../Loading/Loading';
 
 const MyOrders = () => {
     const { user } = useContext(AuthContext);
@@ -10,26 +11,15 @@ const MyOrders = () => {
     const { data: orders = [], isLoading } = useQuery({
         queryKey: ['orders', user?.email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/orders?email=${user?.email}`, {
-                headers: {
-                    authorization: `bearer ${localStorage.getItem('accessToken')}`
-                }
-            })
+            const res = await fetch(`http://localhost:5000/orders?email=${user?.email}`)
             const data = await res.json();
+            console.log(data);
             return data;
         }
     })
 
-
     if (isLoading) {
-        <div className="flex flex-col m-8 rounded shadow-md w-60 sm:w-80 animate-pulse h-96">
-            <div className="h-48 rounded-t bg-gray-700"></div>
-            <div className="flex-1 px-4 py-8 space-y-4 sm:p-8 ">
-                <div className="w-full h-6 rounded bg-gray-700"></div>
-                <div className="w-full h-6 rounded bg-gray-700"></div>
-                <div className="w-3/4 h-6 rounded bg-gray-700"></div>
-            </div>
-        </div>
+        return <Loading></Loading>;
     }
 
 
@@ -50,6 +40,8 @@ const MyOrders = () => {
                     </thead>
                     <tbody>
                         {
+
+                            orders &&
                             orders?.map((order, i) =>
                                 <tr>
                                     <th>{i + 1}</th>
@@ -58,7 +50,7 @@ const MyOrders = () => {
                                     <td>${order.price}</td>
                                     <td>
                                         {
-                                            <Link to={`/ dashboard / payment / ${order._id}`}>
+                                            <Link to={`/dashboard/payment/${order._id}`}>
                                                 <button
                                                     className="btn btn-sm btn-warning"
                                                 >

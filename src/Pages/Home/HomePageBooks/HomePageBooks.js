@@ -1,14 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import Loading from '../../Loading/Loading';
 
 const HomePageBooks = () => {
     const [categories, setCategories] = useState([])
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         fetch('http://localhost:5000/categories')
             .then(res => res.json())
-            .then(data => setCategories(data))
+            .then(data => {
+                setCategories(data)
+            })
+        setLoading(false)
     }, [])
+
+
+    if (loading) {
+        return <Loading></Loading>;
+    }
 
     return (
         <div>

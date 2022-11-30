@@ -1,8 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
+import { AuthContext } from '../context/AuthProvider';
+import useRole from '../hooks/UseRole';
+import Loading from '../Pages/Loading/Loading';
+
 import Navber from '../Pages/Shared/Navber/Navber';
 
 const DashboardLayout = () => {
+    const { user } = useContext(AuthContext);
+    const [userRole, userRoleLoading] = useRole(user?.email);
+
+    if (userRoleLoading) {
+        <Loading></Loading>
+    }
+
     return (
         <div>
             <Navber></Navber>
@@ -17,22 +28,176 @@ const DashboardLayout = () => {
 
                         <li>
                             <NavLink
-                                to="/dashboard/myorders"
+                                end
+                                to={"/dashboard/myorders"}
                                 style={({ isActive }) => ({
                                     color: isActive ? 'blue' : 'black'
                                 })}
                                 className="font-medium tracking-wide transition-colors duration-200 bg-gray-100 "
-                            >My Orders</NavLink>
+                            >
+                                My Orders
+                            </NavLink>
+                        </li>
+                        <li className="bg-transparent">
+                            <NavLink
+                                end
+                                to="/dashboard/addproduct"
+                                style={({ isActive }) => ({
+                                    color: isActive ? 'blue' : 'black'
+                                })}
+                                className="font-medium tracking-wide transition-colors duration-200 bg-gray-100 "
+                            >
+                                Add A Product
+                            </NavLink>
+                        </li>
+
+                        <li>
+                            <NavLink
+                                end
+                                to={"/dashboard/myproducts"}
+                                style={({ isActive }) => ({
+                                    color: isActive ? 'blue' : 'black'
+                                })}
+                                className="font-medium tracking-wide transition-colors duration-200 bg-gray-100 "
+                            >
+                                My Product
+                            </NavLink>
+                        </li>
+
+                        <li>
+                            <NavLink
+                                end
+                                to={"/dashboard/reportedproduct"}
+                                style={({ isActive }) => ({
+                                    color: isActive ? 'blue' : 'black'
+                                })}
+                                className="font-medium tracking-wide transition-colors duration-200 bg-gray-100 "
+                            >
+                                Reported product
+                            </NavLink>
                         </li>
                         <li>
                             <NavLink
-                                to="/dashboard/allusers"
+                                to="/dashboard/allbuyers"
                                 style={({ isActive }) => ({
                                     color: isActive ? 'blue' : 'black'
                                 })}
                                 className="font-medium tracking-wide transition-colors duration-200 bg-gray-100 "
                             >All Buyers</NavLink>
                         </li>
+                        <li>
+                            <NavLink
+                                to="/dashboard/allsellers"
+                                style={({ isActive }) => ({
+                                    color: isActive ? 'blue' : 'black'
+                                })}
+                                className="font-medium tracking-wide transition-colors duration-200 bg-gray-100 "
+                            >All Sellers</NavLink>
+                        </li>
+
+
+
+
+
+
+
+
+
+
+                        {/* {userRole === "buyer" && (
+                            <>
+                                <li>
+                                    <NavLink
+                                        end
+                                        to={"/dashboard/myorders"}
+                                        style={({ isActive }) => ({
+                                            color: isActive ? 'blue' : 'black'
+                                        })}
+                                        className="font-medium tracking-wide transition-colors duration-200 bg-gray-100 "
+                                    >
+                                        My Orders
+                                    </NavLink>
+                                </li>
+                            </>
+                        )} */}
+
+                        {/* {userRole === "seller" && (
+                            <>
+                                <li className="bg-transparent">
+                                    <NavLink
+                                        end
+                                        to="/dashboard/addproduct"
+                                        style={({ isActive }) => ({
+                                            color: isActive ? 'blue' : 'black'
+                                        })}
+                                        className="font-medium tracking-wide transition-colors duration-200 bg-gray-100 "
+                                    >
+                                        Add A Product
+                                    </NavLink>
+                                </li>
+
+                                <li>
+                                    <NavLink
+                                        end
+                                        to={"/dashboard/myproducts"}
+                                        style={({ isActive }) => ({
+                                            color: isActive ? 'blue' : 'black'
+                                        })}
+                                        className="font-medium tracking-wide transition-colors duration-200 bg-gray-100 "
+                                    >
+                                        My Product
+                                    </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink
+                                        end
+                                        to={"/dashboard/my-orders"}
+                                        style={({ isActive }) => ({
+                                            color: isActive ? 'blue' : 'black'
+                                        })}
+                                        className="font-medium tracking-wide transition-colors duration-200 bg-gray-100 "
+                                    >
+                                        My Orders
+                                    </NavLink>
+                                </li>
+                            </>
+                        )} */}
+
+
+                        {/* {userRole === "admin" && (
+                            <>
+                                <li>
+                                    <NavLink
+                                        end
+                                        to={"/dashboard/reportedproduct"}
+                                        style={({ isActive }) => ({
+                                            color: isActive ? 'blue' : 'black'
+                                        })}
+                                        className="font-medium tracking-wide transition-colors duration-200 bg-gray-100 "
+                                    >
+                                        Reported prodcut
+                                    </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink
+                                        to="/dashboard/allbuyers"
+                                        style={({ isActive }) => ({
+                                            color: isActive ? 'blue' : 'black'
+                                        })}
+                                        className="font-medium tracking-wide transition-colors duration-200 bg-gray-100 "
+                                    >All Buyers</NavLink>
+                                </li>
+                                <li>
+                                    <NavLink
+                                        to="/dashboard/allsellers"
+                                        style={({ isActive }) => ({
+                                            color: isActive ? 'blue' : 'black'
+                                        })}
+                                        className="font-medium tracking-wide transition-colors duration-200 bg-gray-100 "
+                                    >All Sellers</NavLink>
+                                </li>
+                            </>
+                        )} */}
                     </ul>
 
                 </div>

@@ -7,6 +7,7 @@ const PurchaseModal = ({ book, setBook }) => {
     const { _id, book_title, resale_price } = book
 
 
+
     const handlePurchase = event => {
         event.preventDefault();
         const form = event.target;
