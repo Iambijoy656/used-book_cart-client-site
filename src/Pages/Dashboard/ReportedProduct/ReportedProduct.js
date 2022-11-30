@@ -12,7 +12,7 @@ const ReportedProduct = () => {
     } = useQuery({
         queryKey: ["reportedItems"],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/getReported`);
+            const res = await fetch(`https://books-cart-server.vercel.app/getReported`);
             const data = await res.json();
             return data;
         },

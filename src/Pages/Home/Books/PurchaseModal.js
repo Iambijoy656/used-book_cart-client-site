@@ -29,7 +29,7 @@ const PurchaseModal = ({ book, setBook }) => {
         }
 
 
-        fetch('http://localhost:5000/buyers', {
+        fetch('https://books-cart-server.vercel.app/buyers', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

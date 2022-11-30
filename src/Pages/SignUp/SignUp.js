@@ -60,7 +60,7 @@ const SignUp = () => {
 
     const userSaved = (name, email, role) => {
         const user = { name, email, role };
-        fetch('http://localhost:5000/users', {
+        fetch('https://books-cart-server.vercel.app/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -95,7 +95,7 @@ const SignUp = () => {
                 };
                 console.log(userForDB);
 
-                fetch(`http://localhost:5000/users`, {
+                fetch(`https://books-cart-server.vercel.app/users`, {
                     method: "POST",
                     headers: {
                         "content-type": "application/json",
@@ -120,7 +120,7 @@ const SignUp = () => {
 
 
     const getUserToken = email => {
-        fetch(`http://localhost:5000/jwt?email=${email}`)
+        fetch(`https://books-cart-server.vercel.app/jwt?email=${email}`)
             .then(res => res.json())
             .then(data => {
                 if (data.accessToken) {

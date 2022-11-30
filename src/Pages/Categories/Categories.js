@@ -14,7 +14,7 @@ const Categories = () => {
     const { data: allBooks = [], isLoading, refetch } = useQuery({
         queryKey: ['allBooks'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/allBooks`)
+            const res = await fetch(`https://books-cart-server.vercel.app/allBooks`)
             const data = await res.json();
             return data;
         }
@@ -23,7 +23,7 @@ const Categories = () => {
     const [categories, setCategories] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/categories')
+        fetch('https://books-cart-server.vercel.app/categories')
             .then(res => res.json())
             .then(data => setCategories(data))
     }, [])

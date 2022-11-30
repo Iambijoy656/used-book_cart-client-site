@@ -18,7 +18,7 @@ const MyProducts = () => {
         queryKey: ["myBookings"],
         queryFn: async () => {
             const res = await fetch(
-                ` http://localhost:5000/my-products?email=${user?.email}`
+                ` https://books-cart-server.vercel.app/my-products?email=${user?.email}`
             );
 
             const data = await res.json();
@@ -43,7 +43,7 @@ const MyProducts = () => {
     // };
 
     const handelDelete = (id) => {
-        fetch(` http://localhost:5000/delete-product?id=${id}`, {
+        fetch(` https://books-cart-server.vercel.app/delete-product?id=${id}`, {
             method: "DELETE",
 
         })

@@ -29,18 +29,18 @@ export const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
-                loader: () => fetch('http://localhost:5000/getLimitBooks')
+                loader: () => fetch('https://books-cart-server.vercel.app/getLimitBooks')
 
             },
             {
                 path: '/categories',
                 element: <Categories></Categories>,
-                loader: () => fetch('http://localhost:5000/allBooks')
+                loader: () => fetch('https://books-cart-server.vercel.app/allBooks')
             },
             {
                 path: '/category/:name',
                 element: <Category></Category>,
-                loader: ({ params }) => fetch(`http://localhost:5000/category/${params.name}`)
+                loader: ({ params }) => fetch(`https://books-cart-server.vercel.app/category/${params.name}`)
 
 
 
@@ -98,12 +98,12 @@ export const router = createBrowserRouter([
                 path: "/dashboard/payment/:id",
                 element: (
 
-                    <PrivateRoute><ReportedProduct></ReportedProduct></PrivateRoute>
+                    <PrivateRoute><Payment></Payment></PrivateRoute>
 
                 ),
                 loader: ({ params }) =>
                     fetch(
-                        `http://localhost:5000/orders/${params.id}`
+                        `https://books-cart-server.vercel.app/orders/${params.id}`
                     ),
             },
 

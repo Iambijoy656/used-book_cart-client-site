@@ -7,7 +7,7 @@ const useRole = (email) => {
     useEffect(() => {
         if (email) {
             setUserRoleLoading(true)
-            fetch(`http://localhost:5000/userRole?email=${email}`)
+            fetch(`https://books-cart-server.vercel.app/userRole?email=${email}`)
                 .then((res) => res.json())
                 .then((data) => {
                     console.log(data.role)

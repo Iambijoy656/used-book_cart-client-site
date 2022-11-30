@@ -22,7 +22,7 @@ const AddProducts = () => {
     const { data: categories = [], isLoading } = useQuery({
         queryKey: ["categories"],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/categories`);
+            const res = await fetch(`https://books-cart-server.vercel.app/categories`);
             const data = await res.json();
 
             return data;
@@ -62,7 +62,7 @@ const AddProducts = () => {
 
                     };
 
-                    fetch(`http://localhost:5000/add-products`, {
+                    fetch(`https://books-cart-server.vercel.app/add-products`, {
                         method: "POST",
                         headers: {
                             authorization: `bearar ${localStorage.getItem("accessToken")}`,

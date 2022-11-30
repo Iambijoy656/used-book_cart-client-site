@@ -8,7 +8,7 @@ const AllSellers = () => {
     const { data: sellers = [], isLoading, refetch } = useQuery({
         queryKey: ['buyers'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/sellers');
+            const res = await fetch('https://books-cart-server.vercel.app/sellers');
             const data = await res.json();
             return data;
 
@@ -19,7 +19,7 @@ const AllSellers = () => {
 
     const handelDelete = (id) => {
         setDeleteLoader(true);
-        fetch(` http://localhost:5000/buyers/delete-buyers?id=${id}`, {
+        fetch(` https://books-cart-server.vercel.app/buyers/delete-buyers?id=${id}`, {
             method: "DELETE",
 
         })

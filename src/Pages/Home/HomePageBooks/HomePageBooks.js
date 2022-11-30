@@ -7,7 +7,7 @@ const HomePageBooks = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch('http://localhost:5000/categories')
+        fetch('https://books-cart-server.vercel.app/categories')
             .then(res => res.json())
             .then(data => {
                 setCategories(data)
