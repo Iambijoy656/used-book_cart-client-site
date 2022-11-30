@@ -17,18 +17,7 @@ const ReportedProduct = () => {
             return data;
         },
     });
-    // const handelDelte = (id) => {
-    //     fetch(` https://sel-nft.vercel.app/deleteReportedProduct/${id}`, {
-    //         method: "DELETE"
-    //     })
-    //         .then((res) => res.json())
-    //         .then((data) => {
-    //             if (data.acknowledged) {
-    //                 toast.info("Product Deleted");
-    //                 refetch();
-    //             }
-    //         });
-    // };
+
 
     if (isLoading) {
         return <Loading></Loading>;
@@ -60,7 +49,6 @@ const ReportedProduct = () => {
 
                             <td>
                                 <button
-                                    // onClick={() => handelDelte(product._id)}
                                     className="btn btn-sm btn-warning"
                                 >
                                     Delete

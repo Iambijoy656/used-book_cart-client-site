@@ -26,74 +26,6 @@ const DashboardLayout = () => {
                     <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80 bg-gray-100 mr-10 text-base-content">
 
-                        <li>
-                            <NavLink
-                                end
-                                to={"/dashboard/myorders"}
-                                style={({ isActive }) => ({
-                                    color: isActive ? 'blue' : 'black'
-                                })}
-                                className="font-medium tracking-wide transition-colors duration-200 bg-gray-100 "
-                            >
-                                My Orders
-                            </NavLink>
-                        </li>
-                        <li className="bg-transparent">
-                            <NavLink
-                                end
-                                to="/dashboard/addproduct"
-                                style={({ isActive }) => ({
-                                    color: isActive ? 'blue' : 'black'
-                                })}
-                                className="font-medium tracking-wide transition-colors duration-200 bg-gray-100 "
-                            >
-                                Add A Product
-                            </NavLink>
-                        </li>
-
-                        <li>
-                            <NavLink
-                                end
-                                to={"/dashboard/myproducts"}
-                                style={({ isActive }) => ({
-                                    color: isActive ? 'blue' : 'black'
-                                })}
-                                className="font-medium tracking-wide transition-colors duration-200 bg-gray-100 "
-                            >
-                                My Product
-                            </NavLink>
-                        </li>
-
-                        <li>
-                            <NavLink
-                                end
-                                to={"/dashboard/reportedproduct"}
-                                style={({ isActive }) => ({
-                                    color: isActive ? 'blue' : 'black'
-                                })}
-                                className="font-medium tracking-wide transition-colors duration-200 bg-gray-100 "
-                            >
-                                Reported product
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink
-                                to="/dashboard/allbuyers"
-                                style={({ isActive }) => ({
-                                    color: isActive ? 'blue' : 'black'
-                                })}
-                                className="font-medium tracking-wide transition-colors duration-200 bg-gray-100 "
-                            >All Buyers</NavLink>
-                        </li>
-                        <li>
-                            <NavLink
-                                to="/dashboard/allsellers"
-                                style={({ isActive }) => ({
-                                    color: isActive ? 'blue' : 'black'
-                                })}
-                                className="font-medium tracking-wide transition-colors duration-200 bg-gray-100 "
-                            >All Sellers</NavLink>
-                        </li>
 
 
 
@@ -104,8 +36,13 @@ const DashboardLayout = () => {
 
 
 
-                        {/* {userRole === "buyer" && (
+
+
+
+
+                        {userRole === "buyer" && (
                             <>
+
                                 <li>
                                     <NavLink
                                         end
@@ -119,23 +56,12 @@ const DashboardLayout = () => {
                                     </NavLink>
                                 </li>
                             </>
-                        )} */}
+                        )}
 
-                        {/* {userRole === "seller" && (
+
+
+                        {userRole === "seller" && (
                             <>
-                                <li className="bg-transparent">
-                                    <NavLink
-                                        end
-                                        to="/dashboard/addproduct"
-                                        style={({ isActive }) => ({
-                                            color: isActive ? 'blue' : 'black'
-                                        })}
-                                        className="font-medium tracking-wide transition-colors duration-200 bg-gray-100 "
-                                    >
-                                        Add A Product
-                                    </NavLink>
-                                </li>
-
                                 <li>
                                     <NavLink
                                         end
@@ -148,10 +74,23 @@ const DashboardLayout = () => {
                                         My Product
                                     </NavLink>
                                 </li>
+
+                                <li className="bg-transparent">
+                                    <NavLink
+                                        end
+                                        to="/dashboard/addproduct"
+                                        style={({ isActive }) => ({
+                                            color: isActive ? 'blue' : 'black'
+                                        })}
+                                        className="font-medium tracking-wide transition-colors duration-200 bg-gray-100 "
+                                    >
+                                        Add A Product
+                                    </NavLink>
+                                </li>
                                 <li>
                                     <NavLink
                                         end
-                                        to={"/dashboard/my-orders"}
+                                        to={"/dashboard/myorders"}
                                         style={({ isActive }) => ({
                                             color: isActive ? 'blue' : 'black'
                                         })}
@@ -161,11 +100,12 @@ const DashboardLayout = () => {
                                     </NavLink>
                                 </li>
                             </>
-                        )} */}
+                        )}
 
 
-                        {/* {userRole === "admin" && (
+                        {userRole === "admin" && (
                             <>
+
                                 <li>
                                     <NavLink
                                         end
@@ -175,7 +115,7 @@ const DashboardLayout = () => {
                                         })}
                                         className="font-medium tracking-wide transition-colors duration-200 bg-gray-100 "
                                     >
-                                        Reported prodcut
+                                        Reported product
                                     </NavLink>
                                 </li>
                                 <li>
@@ -197,7 +137,7 @@ const DashboardLayout = () => {
                                     >All Sellers</NavLink>
                                 </li>
                             </>
-                        )} */}
+                        )}
                     </ul>
 
                 </div>

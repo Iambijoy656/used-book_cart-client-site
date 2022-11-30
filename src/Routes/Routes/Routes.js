@@ -84,21 +84,21 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/addproduct',
-                element: <AddProducts></AddProducts>
+                element: <SellerRoute><AddProducts></AddProducts></SellerRoute>
             },
             {
                 path: '/dashboard/myproducts',
-                element: <MyProducts></MyProducts>
+                element: <SellerRoute><MyProducts></MyProducts></SellerRoute>
             },
             {
                 path: '/dashboard/reportedproduct',
-                element: <ReportedProduct></ReportedProduct>
+                element: <AdminRoute><ReportedProduct></ReportedProduct></AdminRoute>
             },
             {
                 path: "/dashboard/payment/:id",
                 element: (
 
-                    <Payment></Payment>
+                    <PrivateRoute><ReportedProduct></ReportedProduct></PrivateRoute>
 
                 ),
                 loader: ({ params }) =>
